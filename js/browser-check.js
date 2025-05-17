@@ -85,13 +85,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 continueText: 'WebGL로 플레이하기',
                 onContinue: function () {
                     // WebGL로 플레이하기(무시): WebGL 하드웨어 가속 확인
-                    if (mobile || !webglSoftwareRenderer) {
-                        window.location.href = gamePlayLink.href;
-                    } else {
+                    if (!mobile && webglSoftwareRenderer) {
                         showModalTemplate('webgl-no-hwaccel-template', {
                             continueText: '무시하고 플레이',
                             onContinue: function () { window.location.href = gamePlayLink.href; }
                         });
+                    } else {
+                        window.location.href = gamePlayLink.href;
                     }
                 }
             });
