@@ -42,32 +42,71 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // WebGPU가 완전히 지원되지 않는 경우 (API 자체가 없거나, 어댑터를 가져올 수 없는 경우)
             if (!webGPUSupportedByAPI || !adapterAvailable) {
-                let fullWarningMessage = "## WebGPU 지원 안내 ##\n\n";
-                fullWarningMessage += specificErrorMessage; // 위에서 설정된 구체적인 문제 상황 메시지 추가
-                fullWarningMessage += "\n이 게임은 최신 그래픽 기술인 WebGPU를 사용하여 제작되었습니다. 원활한 게임 플레이를 위해 WebGPU를 지원하는 환경이 필요합니다.\n\n";
-                fullWarningMessage += "**권장 브라우저 및 환경 (2025년 초 기준):**\n";
-                fullWarningMessage += "항상 최신 버전의 브라우저를 사용해주세요.\n\n";
-                fullWarningMessage += "  **데스크톱:**\n";
-                fullWarningMessage += "    - Chrome (버전 113 이상): Windows, macOS, ChromeOS, Linux\n";
-                fullWarningMessage += "    - Edge (버전 113 이상): Windows, macOS, Linux\n";
-                fullWarningMessage += "    - Firefox (Nightly 빌드 또는 버전 141 이상 예정, 현재는 플래그 활성화 필요)\n";
-                fullWarningMessage += "    - Safari (macOS 최신 버전의 Technology Preview 또는 Safari 정식 버전에서 개발자 메뉴/기능 플래그로 활성화)\n";
-                fullWarningMessage += "    - Opera (버전 100 이상)\n\n";
-                fullWarningMessage += "  **모바일:**\n";
-                fullWarningMessage += "    - Chrome for Android (버전 121/123 이상)\n";
-                fullWarningMessage += "    - Safari on iOS (iOS 18 베타 이상, 설정에서 기능 플래그 활성화 필요)\n";
-                fullWarningMessage += "    - Samsung Internet (버전 25 이상)\n";
-                fullWarningMessage += "    - Opera Mobile (버전 80 이상)\n\n";
-                fullWarningMessage += "일부 브라우저나 구형 버전에서는 WebGPU가 기본적으로 비활성화되어 있거나, 실험적 기능 플래그를 통해 수동으로 활성화해야 할 수 있습니다. (예: `chrome://flags`, `edge://flags` 등)\n";
-                fullWarningMessage += "또한, WebGPU는 보안 연결(HTTPS 또는 localhost) 환경에서만 작동합니다.\n\n";
-                fullWarningMessage += "계속 진행하시겠습니까?\n";
-                fullWarningMessage += "(게임이 정상적으로 실행되지 않거나 일부 기능이 제한될 수 있습니다.)";
-
-                if (!confirm(fullWarningMessage)) {
-                    event.preventDefault();
-                }
+                event.preventDefault();
+                showWebGPUModal(specificErrorMessage, gamePlayLink.href);
             }
             // WebGPU가 지원되는 것으로 판단되면 (API 존재 및 어댑터 사용 가능), 아무런 추가 동작 없이 기본 링크 이동을 수행합니다.
         });
+    }
+
+    // ===== WebGPU 모달 관련 함수 및 이벤트 =====
+    function showWebGPUModal(specificErrorMessage, continueUrl) {
+        const modal = document.getElementById('webgpu-modal');
+        const modalMsg = document.getElementById('webgpu-modal-message');
+        const closeBtn = document.getElementById('webgpu-modal-close');
+        const cancelBtn = document.getElementById('webgpu-modal-cancel');
+        const continueBtn = document.getElementById('webgpu-modal-continue');
+
+        let fullWarningMessage = "<strong>WebGPU 지원 안내</strong><br><br>";
+        if (specificErrorMessage) {
+            fullWarningMessage += specificErrorMessage.replace(/\n/g, '<br>');
+        }
+        fullWarningMessage += "<br>이 게임은 최신 그래픽 기술인 <b>WebGPU</b>를 사용하여 제작되었습니다. 원활한 게임 플레이를 위해 WebGPU를 지원하는 환경이 필요합니다.<br><br>";
+        fullWarningMessage += "<b>권장 브라우저 및 환경 (2025년 초 기준):</b><br>";
+        fullWarningMessage += "항상 최신 버전의 브라우저를 사용해주세요.<br><br>";
+        fullWarningMessage += "<b>데스크톱:</b><br>";
+        fullWarningMessage += "- Chrome (버전 113 이상): Windows, macOS, ChromeOS, Linux<br>";
+        fullWarningMessage += "- Edge (버전 113 이상): Windows, macOS, Linux<br>";
+        fullWarningMessage += "- Firefox (Nightly 빌드 또는 버전 141 이상 예정, 현재는 플래그 활성화 필요)<br>";
+        fullWarningMessage += "- Safari (macOS 최신 버전의 Technology Preview 또는 Safari 정식 버전에서 개발자 메뉴/기능 플래그로 활성화)<br>";
+        fullWarningMessage += "- Opera (버전 100 이상)<br><br>";
+        fullWarningMessage += "<b>모바일:</b><br>";
+        fullWarningMessage += "- Chrome for Android (버전 121/123 이상)<br>";
+        fullWarningMessage += "- Safari on iOS (iOS 18 베타 이상, 설정에서 기능 플래그 활성화 필요)<br>";
+        fullWarningMessage += "- Samsung Internet (버전 25 이상)<br>";
+        fullWarningMessage += "- Opera Mobile (버전 80 이상)<br><br>";
+        fullWarningMessage += "일부 브라우저나 구형 버전에서는 WebGPU가 기본적으로 비활성화되어 있거나, 실험적 기능 플래그를 통해 수동으로 활성화해야 할 수 있습니다. (예: <code>chrome://flags</code>, <code>edge://flags</code> 등)<br>";
+        fullWarningMessage += "또한, WebGPU는 보안 연결(HTTPS 또는 localhost) 환경에서만 작동합니다.<br><br>";
+        fullWarningMessage += "<b>계속 진행하시겠습니까?</b><br>";
+        fullWarningMessage += "<span style='color:#d00'>(게임이 정상적으로 실행되지 않거나 일부 기능이 제한될 수 있습니다.)</span>";
+
+        modalMsg.innerHTML = fullWarningMessage;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        // 닫기 함수
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        // 취소: 모달 닫기
+        cancelBtn.onclick = closeModal;
+        closeBtn.onclick = closeModal;
+        // 계속: 게임 페이지로 이동
+        continueBtn.onclick = function () {
+            closeModal();
+            window.location.href = continueUrl;
+        };
+        // ESC 키로 닫기
+        window.addEventListener('keydown', function escListener(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+                window.removeEventListener('keydown', escListener);
+            }
+        });
+        // 바깥 클릭 시 닫기
+        modal.onclick = function (e) {
+            if (e.target === modal) closeModal();
+        };
     }
 });
