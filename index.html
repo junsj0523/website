@@ -1,127 +1,94 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity Web Player | KNU Arcade</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-  </head>
-  <body>
-    <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=1280 height=720 tabindex="-1"></canvas>
-      <div id="unity-loading-bar">
-        <div id="unity-logo"></div>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
-      </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-logo-title-footer"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">KNU Arcade</div>
-      </div>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리 동아리 홈페이지</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- 외부 CSS 파일 연결 -->
+</head>
+
+<body>
+    <header>
+        <h1>우리 동아리</h1>
+        <!-- 테마 토글 버튼 추가 -->
+        <button id="theme-toggle" aria-label="테마 전환">🌙</button>
+        <!-- 필요시 네비게이션 추가 -->
+        <!-- <nav>
+            <a href="#introduction">소개</a>
+            <a href="#minigames">미니게임</a>
+            <a href="#history">연혁</a>
+            <a href="#contact">연락처</a>
+        </nav> -->
+    </header>
+
+    <div class="container">
+        <section id="introduction" class="section">
+            <h2>동아리 소개</h2>
+            <p>여기에 동아리에 대한 설명을 작성합니다. 우리 동아리는 어떤 활동을 하고, 어떤 목표를 가지고 있는지 등을 자유롭게 기술해주세요. 창의적이고 재미있는 프로젝트를 통해 함께 성장하는 것을
+                목표로 합니다!</p>
+        </section>
+
+        <section id="game-play" class="section game-play-button-container">
+            <h2>게임 플레이</h2>
+            <p>아래 버튼을 클릭하여 저희가 만든 게임을 즐겨보세요!</p>
+            <a href="game/index.html" class="game-play-button" id="game-play-link">
+                <img src="images/game-play-button.png" alt="게임 플레이 시작">
+                <!-- images 폴더에 game-play-button.png 파일을 넣어주세요 -->
+            </a>
+        </section>
+
+        <section id="minigames" class="section">
+            <h2>미니게임 소개</h2>
+            <p>우리 게임에는 다음과 같은 재미있는 미니게임들이 포함되어 있습니다:</p>
+
+            <div class="minigame">
+                <img src="images/minigame1.png" alt="미니게임 1 이미지">
+                <!-- images 폴더에 minigame1.png 파일을 넣어주세요 -->
+                <div class="minigame-info">
+                    <h3>미니게임 1: 우주 탐험</h3>
+                    <p>미니게임 1에 대한 간략한 설명입니다. 신비로운 우주를 탐험하며 숨겨진 보물을 찾아보세요. 다양한 행성과 외계 생명체가 여러분을 기다립니다!</p>
+                </div>
+            </div>
+
+            <div class="minigame">
+                <img src="images/minigame2.png" alt="미니게임 2 이미지">
+                <!-- images 폴더에 minigame2.png 파일을 넣어주세요 -->
+                <div class="minigame-info">
+                    <h3>미니게임 2: 퍼즐 마스터</h3>
+                    <p>미니게임 2에 대한 간략한 설명입니다. 두뇌를 자극하는 다양한 퍼즐을 풀고 최고 점수에 도전하세요. 레벨이 올라갈수록 더욱 어려워집니다!</p>
+                </div>
+            </div>
+            <!-- 필요에 따라 미니게임 소개 추가 -->
+        </section>
+
+        <section id="history" class="section">
+            <h2>동아리 연혁</h2>
+            <ul>
+                <li><strong>2023년:</strong> 동아리 창립 및 첫 아이디어 회의</li>
+                <li><strong>2024년 상반기:</strong> 첫 번째 프로토타입 개발 시작</li>
+                <li><strong>2024년 하반기:</strong> '우리 게임' 프로젝트 본격 착수</li>
+                <li><strong>2025년:</strong> '우리 게임' WebGL 버전 출시 예정!</li>
+                <li>여기에 주요 연혁을 추가합니다.</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>연락처</h2>
+            <p>동아리에 대한 문의나 건의사항이 있다면 아래 연락처로 편하게 연락해주세요:</p>
+            <p><strong>이메일:</strong> <a href="mailto:contact@example.com">contact@example.com</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/your-username/your-repository-name"
+                    target="_blank">동아리 GitHub 저장소</a></p>
+            <p><strong>동아리방 위치:</strong> 학생회관 301호 (방문 전 연락 필수!)</p>
+        </section>
     </div>
-    <script>
-      var canvas = document.querySelector("#unity-canvas");
 
-      // Shows a temporary message banner/ribbon for a few seconds, or
-      // a permanent error message on top of the canvas if type=='error'.
-      // If type=='warning', a yellow highlight color is used.
-      // Modify or remove this function to customize the visually presented
-      // way that non-critical warnings and error messages are presented to the
-      // user.
-      function unityShowBanner(msg, type) {
-        var warningBanner = document.querySelector("#unity-warning");
-        function updateBannerVisibility() {
-          warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-        }
-        var div = document.createElement('div');
-        div.innerHTML = msg;
-        warningBanner.appendChild(div);
-        if (type == 'error') div.style = 'background: red; padding: 10px;';
-        else {
-          if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function() {
-            warningBanner.removeChild(div);
-            updateBannerVisibility();
-          }, 5000);
-        }
-        updateBannerVisibility();
-      }
+    <footer>
+        <p>&copy; 2025 우리 동아리. All Rights Reserved.</p>
+    </footer>
 
-      var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/website.loader.js";
-      var config = {
-        arguments: [],
-        dataUrl: buildUrl + "/website.data.unityweb",
-        frameworkUrl: buildUrl + "/website.framework.js.unityweb",
-        codeUrl: buildUrl + "/website.wasm.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Potenity",
-        productName: "KNU Arcade",
-        productVersion: "1.0",
-        showBanner: unityShowBanner,
-      };
+    <script src="js/theme.js"></script>
+    <script src="js/browser-check.js"></script>
+</body>
 
-      // By default, Unity keeps WebGL canvas render target size matched with
-      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
-      // Set this to false if you want to decouple this synchronization from
-      // happening inside the engine, and you would instead like to size up
-      // the canvas DOM size and WebGL render target sizes yourself.
-      // config.matchWebGLToCanvasSize = false;
-
-      // If you would like all file writes inside Unity Application.persistentDataPath
-      // directory to automatically persist so that the contents are remembered when
-      // the user revisits the site the next time, uncomment the following line:
-      // config.autoSyncPersistentDataPath = true;
-      // This autosyncing is currently not the default behavior to avoid regressing
-      // existing user projects that might rely on the earlier manual
-      // JS_FileSystem_Sync() behavior, but in future Unity version, this will be
-      // expected to change.
-
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
-        document.querySelector("#unity-container").className = "unity-mobile";
-        canvas.className = "unity-mobile";
-
-        // To lower canvas resolution on mobile devices to gain some
-        // performance, uncomment the following line:
-        // config.devicePixelRatio = 1;
-
-
-      } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        canvas.style.width = "1280px";
-        canvas.style.height = "720px";
-      }
-
-      document.querySelector("#unity-loading-bar").style.display = "block";
-
-      var script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
-
-              }).catch((message) => {
-                alert(message);
-              });
-            };
-
-      document.body.appendChild(script);
-
-    </script>
-  </body>
 </html>
