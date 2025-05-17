@@ -1,234 +1,173 @@
 /* main-content.css: 본문(컨테이너, 섹션, 게임, 미니게임, 연혁, 연락처, 푸터) 관련 CSS를 통합한 파일 */
 
 /* ===== 전체 테마 ===== */
-/* base.css */
+/* 전체 페이지의 기본 폰트, 배경, 텍스트 색상 등 전역 스타일 */
 body {
     font-family: Arial, sans-serif;
-    /* 본문 폰트 패밀리 */
     margin: 0;
-    /* 바깥 여백 없음 */
     padding: 0;
-    /* 안쪽 여백 없음 */
     background-color: var(--page-bg);
-    /* 전체 배경색 */
     color: var(--page-text);
-    /* 기본 텍스트 색상 */
     transition: background-color 0.3s ease, color 0.3s ease;
-    /* 색상 전환 애니메이션 */
 }
 
 /* ===== 컨테이너 및 섹션 ===== */
-/* container.css */
+/* 본문 영역의 최대 너비, 가운데 정렬, 배경 등 레이아웃 컨테이너 */
 .container {
     width: 80%;
-    /* 컨테이너 너비 */
     margin: auto;
-    /* 가운데 정렬 */
     overflow: hidden;
-    /* 넘침 숨김 */
     padding: 2vw;
-    /* 안쪽 여백 */
     background-color: var(--container-bg);
-    /* 컨테이너 배경색 */
     transition: background-color 0.3s ease;
-    /* 배경색 전환 */
 }
 
+/* 각 주요 구역(소개, 활동 등)의 구분 및 하단 여백, 구분선 */
 .section {
     margin-bottom: 2vw;
-    /* 아래쪽 여백 */
     padding-bottom: 2vw;
-    /* 안쪽 아래 여백 */
     border-bottom: 1px solid var(--section-border);
-    /* 하단 구분선 */
     transition: border-color 0.3s ease;
-    /* 구분선 색상 전환 */
 }
 
+/* 섹션 제목의 색상, 하단 테두리, 여백 등 스타일 */
 .section h2 {
     color: var(--section-title-text);
-    /* 섹션 제목 색상 */
     border-bottom: 0.2vw solid var(--section-title-border);
-    /* 제목 하단 테두리 */
     padding-bottom: 1vw;
-    /* 제목 아래 여백 */
     margin-bottom: 2vw;
-    /* 제목과 본문 사이 여백 */
     transition: color 0.3s ease, border-color 0.3s ease;
-    /* 색상 전환 */
 }
 
 /* ===== 게임 플레이 버튼 및 미니게임 ===== */
-/* game.css */
+/* 게임 플레이 버튼 영역의 중앙 정렬 및 여백 */
 .game-play-button-container {
     text-align: center;
-    /* 가운데 정렬 */
     margin: 3vw 0;
-    /* 위아래 여백 */
 }
 
+/* 게임 플레이 버튼(이미지 링크)의 크기, 정렬 */
 .game-play-button {
     display: block;
-    /* 블록 요소 */
     width: 100%;
-    /* 전체 너비 */
     max-width: 50vw;
-    /* 최대 너비 */
     min-width: 20vw;
-    /* 최소 너비 */
     margin: 0 auto;
-    /* 가운데 정렬 */
 }
 
+/* 게임 플레이 버튼 이미지의 크기, 테두리, 마우스 오버 효과 */
 .game-play-button img {
     width: 100%;
-    /* 이미지 전체 너비 */
     height: auto;
-    /* 비율 유지 */
     cursor: pointer;
-    /* 커서 포인터 */
     border: 0.3vw solid transparent;
-    /* 투명 테두리 */
     border-radius: 1vw;
-    /* 둥근 테두리 */
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
-    /* 애니메이션 */
     box-sizing: border-box;
-    /* 테두리 포함 크기 */
     display: block;
-    /* 블록 요소 */
 }
 
+/* 게임 플레이 버튼 이미지에 마우스 오버 시 확대, 그림자, 테두리 강조 */
 .game-play-button img:hover {
     transform: scale(1.05);
-    /* 확대 효과 */
     box-shadow: 0 0 15px var(--button-hover-shadow);
-    /* 그림자 효과 */
     border-color: var(--button-hover-border);
-    /* 파란 테두리 */
 }
 
-.minigame {
+/* ===== 미니게임 리스트 구조화 ===== */
+/* 미니게임 카드 리스트의 flex 레이아웃, 간격, 리스트 스타일 제거 */
+.minigame-list {
     display: flex;
-    /* 플렉스 레이아웃 */
-    align-items: flex-start;
-    /* 위쪽 정렬 */
-    margin-bottom: 2.5vw;
-    /* 아래쪽 여백 */
-    padding: 1.5vw;
-    /* 안쪽 여백 */
+    flex-wrap: wrap;
+    gap: 2vw;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2vw 0;
+}
+
+/* 미니게임 카드의 배경, 테두리, 그림자, 내부 정렬 */
+.minigame-card {
+    flex: 1 1 250px;
+    max-width: 320px;
+    background: var(--card-bg);
     border: 0.1vw solid var(--card-border);
-    /* 카드 테두리 */
     border-radius: 0.8vw;
-    /* 둥근 테두리 */
-    background-color: var(--card-bg);
-    /* 카드 배경색 */
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-    /* 색상 전환 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background 0.3s, border-color 0.3s;
 }
 
-.minigame img {
-    max-width: 20vw;
-    /* 최대 너비 */
-    margin-right: 2vw;
-    /* 오른쪽 여백 */
+/* 카드 내 figure 요소의 중앙 정렬 */
+.minigame-card figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 카드 내 미니게임 이미지의 크기, 테두리, 둥근 모서리 */
+.minigame-card img {
+    max-width: 100%;
     border-radius: 0.5vw;
-    /* 둥근 테두리 */
     border: 0.1vw solid var(--card-image-border);
-    /* 이미지 테두리 */
-    transition: border-color 0.3s ease;
-    /* 색상 전환 */
+    margin-bottom: 0.8vw;
+    transition: border-color 0.3s;
 }
 
-.minigame-info h3 {
-    margin-top: 0;
-    /* 위쪽 여백 없음 */
+/* 카드 내 설명(제목, 부연설명)의 폰트, 색상, 정렬 */
+.minigame-card figcaption {
+    font-size: 1.05em;
     color: var(--card-title-text);
-    /* 카드 제목 색상 */
-    transition: color 0.3s ease;
-    /* 색상 전환 */
-}
-
-.minigame-info p {
-    margin: 0.5vw 0;
-    /* 위아래 여백 */
-    line-height: 1.6;
-    /* 줄 간격 */
-}
-
-@media (max-width: 700px) {
-    .game-play-button-container {
-        padding: 0 4vw;
-        /* 좌우 여백 */
-    }
-
-    .game-play-button {
-        max-width: 100%;
-        /* 모바일: 최대 너비 */
-        min-width: 0;
-        /* 모바일: 최소 너비 */
-    }
-
-    .game-play-button img {
-        max-width: 100%;
-        /* 모바일: 최대 너비 */
-        min-width: 0;
-        /* 모바일: 최소 너비 */
-    }
-
-    .minigame img {
-        max-width: 40vw;
-        /* 모바일: 최대 너비 */
-        margin-right: 4vw;
-        /* 모바일: 오른쪽 여백 */
-    }
-
-    .minigame {
-        padding: 3vw;
-        /* 모바일: 안쪽 여백 */
-    }
+    text-align: center;
+    margin-top: 0.2vw;
 }
 
 /* ===== 연혁(History) ===== */
+/* 연혁 섹션의 리스트 마커(사각형), 들여쓰기 */
 #history ul {
     list-style-type: square;
-    /* 사각형 리스트 마커 */
     padding-left: 2vw;
-    /* 왼쪽 들여쓰기 */
 }
 
 /* ===== 연락처(Contact) ===== */
+/* 연락처 섹션의 문단 줄 간격 */
 #contact p {
     line-height: 1.8;
-    /* 연락처 문단 줄 간격 */
 }
 
+/* 연락처 링크의 색상, 밑줄 제거, 전환 효과 */
 #contact a {
     color: var(--link-text);
-    /* 연락처 링크 색상 */
     text-decoration: none;
-    /* 밑줄 제거 */
     transition: color 0.3s ease;
-    /* 색상 전환 */
 }
 
+/* 연락처 링크에 마우스 오버 시 밑줄 표시 */
 #contact a:hover {
     text-decoration: underline;
-    /* 호버 시 밑줄 */
 }
 
 /* ===== 푸터(Footer) ===== */
+/* 푸터 영역의 중앙 정렬, 배경색, 텍스트 색상, 여백 */
 footer {
     text-align: center;
-    /* 가운데 정렬 */
     padding: 2vw;
-    /* 안쪽 여백 */
     background-color: var(--footer-bg);
-    /* 푸터 배경색 */
     color: var(--footer-text);
-    /* 푸터 텍스트 색상 */
     margin-top: 3vw;
-    /* 위쪽 여백 */
     transition: background-color 0.3s ease, color 0.3s ease;
-    /* 색상 전환 */
+}
+
+/* ===== 유틸리티 클래스 ===== */
+/* 경고, 주의 등 강조 텍스트(빨간색) */
+.text-danger {
+    color: #d00 !important;
+}
+
+/* 약간 크게 표시할 텍스트 */
+.text-large {
+    font-size: 1.1em !important;
 }

@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setModalTemplate(msg, templateId);
         // 버튼 텍스트/동작
         cancelBtn.textContent = options.cancelText || '창 닫기';
+        cancelBtn.type = 'button';
         cancelBtn.onclick = (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -61,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (options.continueText) {
             continueBtn.style.display = '';
             continueBtn.textContent = options.continueText;
+            continueBtn.type = 'button';
             continueBtn.onclick = () => { closeModal(); if (options.onContinue) options.onContinue(); };
         } else {
             continueBtn.style.display = 'none';
