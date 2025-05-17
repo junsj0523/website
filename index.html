@@ -4,93 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="창의적이고 재미있는 프로젝트를 통해 함께 성장하는 우리 동아리의 공식 홈페이지입니다.">
     <title>우리 동아리 홈페이지</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- 외부 CSS 파일 연결 -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/main-content.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 
 <body>
     <header>
         <h1>우리 동아리</h1>
-        <div class="lang-switch">
-            <a href="index.html">한국어</a> | <a href="index-en.html">English</a>
+        <div class="header-controls-row">
+            <div class="header-controls">
+                <button id="theme-toggle" aria-label="테마 전환">🌙</button>
+            </div>
+            <nav class="lang-switch" aria-label="언어 전환">
+                <a href="index.html">한국어</a> | <a href="index-en.html">English</a>
+            </nav>
         </div>
-        <!-- 테마 토글 버튼 추가 -->
-        <button id="theme-toggle" aria-label="테마 전환">🌙</button>
-        <!-- 필요시 네비게이션 추가 -->
-        <!-- <nav>
-            <a href="#introduction">소개</a>
-            <a href="#minigames">미니게임</a>
-            <a href="#history">연혁</a>
-            <a href="#contact">연락처</a>
-        </nav> -->
     </header>
+    <main>
+        <div class="container">
+            <section id="introduction" class="section">
+                <h2>동아리 소개</h2>
+                <p>여기에 동아리에 대한 설명을 작성합니다. 우리 동아리는 어떤 활동을 하고, 어떤 목표를 가지고 있는지 등을 자유롭게 기술해주세요. 창의적이고 재미있는 프로젝트를 통해 함께 성장하는
+                    것을
+                    목표로 합니다!</p>
+            </section>
 
-    <div class="container">
-        <section id="introduction" class="section">
-            <h2>동아리 소개</h2>
-            <p>여기에 동아리에 대한 설명을 작성합니다. 우리 동아리는 어떤 활동을 하고, 어떤 목표를 가지고 있는지 등을 자유롭게 기술해주세요. 창의적이고 재미있는 프로젝트를 통해 함께 성장하는 것을
-                목표로 합니다!</p>
-        </section>
+            <section id="game-play" class="section game-play-button-container">
+                <h2>게임 플레이</h2>
+                <p>아래 버튼을 클릭하여 저희가 만든 게임을 즐겨보세요!</p>
+                <a href="game/index.html" class="game-play-button" id="game-play-link">
+                    <img src="images/game-play-button.png" alt="게임 플레이 시작 버튼 이미지">
+                </a>
+            </section>
 
-        <section id="game-play" class="section game-play-button-container">
-            <h2>게임 플레이</h2>
-            <p>아래 버튼을 클릭하여 저희가 만든 게임을 즐겨보세요!</p>
-            <a href="game/index.html" class="game-play-button" id="game-play-link">
-                <img src="images/game-play-button.png" alt="게임 플레이 시작">
-                <!-- images 폴더에 game-play-button.png 파일을 넣어주세요 -->
-            </a>
-        </section>
+            <section id="minigames" class="section">
+                <h2>미니게임 소개</h2>
+                <p>우리 게임에는 다음과 같은 재미있는 미니게임들이 포함되어 있습니다:</p>
 
-        <section id="minigames" class="section">
-            <h2>미니게임 소개</h2>
-            <p>우리 게임에는 다음과 같은 재미있는 미니게임들이 포함되어 있습니다:</p>
-
-            <div class="minigame">
-                <img src="images/minigame1.png" alt="미니게임 1 이미지">
-                <!-- images 폴더에 minigame1.png 파일을 넣어주세요 -->
-                <div class="minigame-info">
-                    <h3>미니게임 1: 우주 탐험</h3>
-                    <p>미니게임 1에 대한 간략한 설명입니다. 신비로운 우주를 탐험하며 숨겨진 보물을 찾아보세요. 다양한 행성과 외계 생명체가 여러분을 기다립니다!</p>
+                <div class="minigame">
+                    <img src="images/minigame1.png" alt="미니게임 1: 우주 탐험 이미지">
+                    <div class="minigame-info">
+                        <h3>미니게임 1: 우주 탐험</h3>
+                        <p>미니게임 1에 대한 간략한 설명입니다. 신비로운 우주를 탐험하며 숨겨진 보물을 찾아보세요. 다양한 행성과 외계 생명체가 여러분을 기다립니다!</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="minigame">
-                <img src="images/minigame2.png" alt="미니게임 2 이미지">
-                <!-- images 폴더에 minigame2.png 파일을 넣어주세요 -->
-                <div class="minigame-info">
-                    <h3>미니게임 2: 퍼즐 마스터</h3>
-                    <p>미니게임 2에 대한 간략한 설명입니다. 두뇌를 자극하는 다양한 퍼즐을 풀고 최고 점수에 도전하세요. 레벨이 올라갈수록 더욱 어려워집니다!</p>
+                <div class="minigame">
+                    <img src="images/minigame2.png" alt="미니게임 2: 퍼즐 마스터 이미지">
+                    <div class="minigame-info">
+                        <h3>미니게임 2: 퍼즐 마스터</h3>
+                        <p>미니게임 2에 대한 간략한 설명입니다. 두뇌를 자극하는 다양한 퍼즐을 풀고 최고 점수에 도전하세요. 레벨이 올라갈수록 더욱 어려워집니다!</p>
+                    </div>
                 </div>
-            </div>
-            <!-- 필요에 따라 미니게임 소개 추가 -->
-        </section>
+            </section>
 
-        <section id="history" class="section">
-            <h2>동아리 연혁</h2>
-            <ul>
-                <li><strong>2023년:</strong> 동아리 창립 및 첫 아이디어 회의</li>
-                <li><strong>2024년 상반기:</strong> 첫 번째 프로토타입 개발 시작</li>
-                <li><strong>2024년 하반기:</strong> '우리 게임' 프로젝트 본격 착수</li>
-                <li><strong>2025년:</strong> '우리 게임' WebGL 버전 출시 예정!</li>
-                <li>여기에 주요 연혁을 추가합니다.</li>
-            </ul>
-        </section>
+            <section id="history" class="section">
+                <h2>동아리 연혁</h2>
+                <ul>
+                    <li><strong>2023년:</strong> 동아리 창립 및 첫 아이디어 회의</li>
+                    <li><strong>2024년 상반기:</strong> 첫 번째 프로토타입 개발 시작</li>
+                    <li><strong>2024년 하반기:</strong> '우리 게임' 프로젝트 본격 착수</li>
+                    <li><strong>2025년:</strong> '우리 게임' WebGL 버전 출시 예정!</li>
+                    <li>여기에 주요 연혁을 추가합니다.</li>
+                </ul>
+            </section>
 
-        <section id="contact" class="section">
-            <h2>연락처</h2>
-            <p>동아리에 대한 문의나 건의사항이 있다면 아래 연락처로 편하게 연락해주세요:</p>
-            <p><strong>이메일:</strong> <a href="mailto:contact@example.com">contact@example.com</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/your-username/your-repository-name"
-                    target="_blank">동아리 GitHub 저장소</a></p>
-            <p><strong>동아리방 위치:</strong> 학생회관 301호 (방문 전 연락 필수!)</p>
-        </section>
-    </div>
-
+            <section id="contact" class="section">
+                <h2>연락처</h2>
+                <p>동아리에 대한 문의나 건의사항이 있다면 아래 연락처로 편하게 연락해주세요:</p>
+                <p><strong>이메일:</strong> <a href="mailto:contact@example.com">contact@example.com</a></p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/your-username/your-repository-name"
+                        target="_blank">동아리 GitHub 저장소</a></p>
+                <p><strong>동아리방 위치:</strong> 학생회관 301호 (방문 전 연락 필수!)</p>
+            </section>
+        </div>
+    </main>
     <footer>
-        <p>&copy; 2025 우리 동아리. All Rights Reserved.</p>
+        <p>&copy; <span id="current-year"></span> 우리 동아리. All Rights Reserved.</p>
     </footer>
-
-    <!-- WebGPU 경고 모달 -->
     <div id="webgpu-modal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="modal-close" id="webgpu-modal-close">&times;</span>
@@ -102,7 +97,6 @@
         </div>
     </div>
 
-    <!-- WebGPU 경고 안내문 템플릿 (js에서 복사해서 사용) -->
     <template id="webgpu-warning-template">
         <strong>WebGPU 지원 안내</strong>
         <div class="webgpu-warning-alert">현재 브라우저에서 WebGPU가 지원되지 않습니다!</div>
@@ -130,6 +124,9 @@
 
     <script src="js/theme.js"></script>
     <script src="js/browser-check.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
