@@ -4,128 +4,231 @@
 /* base.css */
 body {
     font-family: Arial, sans-serif;
+    /* 본문 폰트 패밀리 */
     margin: 0;
+    /* 바깥 여백 없음 */
     padding: 0;
+    /* 안쪽 여백 없음 */
     background-color: var(--page-bg);
+    /* 전체 배경색 */
     color: var(--page-text);
+    /* 기본 텍스트 색상 */
     transition: background-color 0.3s ease, color 0.3s ease;
+    /* 색상 전환 애니메이션 */
 }
 
 /* ===== 컨테이너 및 섹션 ===== */
 /* container.css */
 .container {
     width: 80%;
+    /* 컨테이너 너비 */
     margin: auto;
+    /* 가운데 정렬 */
     overflow: hidden;
-    padding: 20px;
+    /* 넘침 숨김 */
+    padding: 2vw;
+    /* 안쪽 여백 */
     background-color: var(--container-bg);
+    /* 컨테이너 배경색 */
     transition: background-color 0.3s ease;
+    /* 배경색 전환 */
 }
 
 .section {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 2vw;
+    /* 아래쪽 여백 */
+    padding-bottom: 2vw;
+    /* 안쪽 아래 여백 */
     border-bottom: 1px solid var(--section-border);
+    /* 하단 구분선 */
     transition: border-color 0.3s ease;
-}
-
-.section:last-child {
-    border-bottom: none;
+    /* 구분선 색상 전환 */
 }
 
 .section h2 {
     color: var(--section-title-text);
-    border-bottom: 2px solid var(--section-title-border);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    /* 섹션 제목 색상 */
+    border-bottom: 0.2vw solid var(--section-title-border);
+    /* 제목 하단 테두리 */
+    padding-bottom: 1vw;
+    /* 제목 아래 여백 */
+    margin-bottom: 2vw;
+    /* 제목과 본문 사이 여백 */
     transition: color 0.3s ease, border-color 0.3s ease;
+    /* 색상 전환 */
 }
 
 /* ===== 게임 플레이 버튼 및 미니게임 ===== */
 /* game.css */
 .game-play-button-container {
     text-align: center;
-    margin: 30px 0;
+    /* 가운데 정렬 */
+    margin: 3vw 0;
+    /* 위아래 여백 */
+}
+
+.game-play-button {
+    display: block;
+    /* 블록 요소 */
+    width: 100%;
+    /* 전체 너비 */
+    max-width: 50vw;
+    /* 최대 너비 */
+    min-width: 20vw;
+    /* 최소 너비 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
 }
 
 .game-play-button img {
-    max-width: 300px;
+    width: 100%;
+    /* 이미지 전체 너비 */
+    height: auto;
+    /* 비율 유지 */
     cursor: pointer;
-    border: 3px solid transparent;
-    border-radius: 10px;
+    /* 커서 포인터 */
+    border: 0.3vw solid transparent;
+    /* 투명 테두리 */
+    border-radius: 1vw;
+    /* 둥근 테두리 */
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    /* 애니메이션 */
+    box-sizing: border-box;
+    /* 테두리 포함 크기 */
+    display: block;
+    /* 블록 요소 */
 }
 
 .game-play-button img:hover {
     transform: scale(1.05);
+    /* 확대 효과 */
     box-shadow: 0 0 15px var(--button-hover-shadow);
+    /* 그림자 효과 */
     border-color: var(--button-hover-border);
+    /* 파란 테두리 */
 }
 
 .minigame {
     display: flex;
+    /* 플렉스 레이아웃 */
     align-items: flex-start;
-    margin-bottom: 25px;
-    padding: 15px;
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
+    /* 위쪽 정렬 */
+    margin-bottom: 2.5vw;
+    /* 아래쪽 여백 */
+    padding: 1.5vw;
+    /* 안쪽 여백 */
+    border: 0.1vw solid var(--card-border);
+    /* 카드 테두리 */
+    border-radius: 0.8vw;
+    /* 둥근 테두리 */
     background-color: var(--card-bg);
+    /* 카드 배경색 */
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    /* 색상 전환 */
 }
 
 .minigame img {
-    max-width: 200px;
-    margin-right: 20px;
-    border-radius: 5px;
-    border: 1px solid var(--card-image-border);
+    max-width: 20vw;
+    /* 최대 너비 */
+    margin-right: 2vw;
+    /* 오른쪽 여백 */
+    border-radius: 0.5vw;
+    /* 둥근 테두리 */
+    border: 0.1vw solid var(--card-image-border);
+    /* 이미지 테두리 */
     transition: border-color 0.3s ease;
+    /* 색상 전환 */
 }
 
 .minigame-info h3 {
     margin-top: 0;
+    /* 위쪽 여백 없음 */
     color: var(--card-title-text);
+    /* 카드 제목 색상 */
     transition: color 0.3s ease;
+    /* 색상 전환 */
 }
 
 .minigame-info p {
-    margin: 5px 0;
+    margin: 0.5vw 0;
+    /* 위아래 여백 */
     line-height: 1.6;
+    /* 줄 간격 */
+}
+
+@media (max-width: 700px) {
+    .game-play-button-container {
+        padding: 0 4vw;
+        /* 좌우 여백 */
+    }
+
+    .game-play-button {
+        max-width: 100%;
+        /* 모바일: 최대 너비 */
+        min-width: 0;
+        /* 모바일: 최소 너비 */
+    }
+
+    .game-play-button img {
+        max-width: 100%;
+        /* 모바일: 최대 너비 */
+        min-width: 0;
+        /* 모바일: 최소 너비 */
+    }
+
+    .minigame img {
+        max-width: 40vw;
+        /* 모바일: 최대 너비 */
+        margin-right: 4vw;
+        /* 모바일: 오른쪽 여백 */
+    }
+
+    .minigame {
+        padding: 3vw;
+        /* 모바일: 안쪽 여백 */
+    }
 }
 
 /* ===== 연혁(History) ===== */
-/* history.css */
 #history ul {
     list-style-type: square;
-    padding-left: 20px;
-}
-
-#history li {
-    margin-bottom: 10px;
+    /* 사각형 리스트 마커 */
+    padding-left: 2vw;
+    /* 왼쪽 들여쓰기 */
 }
 
 /* ===== 연락처(Contact) ===== */
-/* contact.css */
 #contact p {
     line-height: 1.8;
+    /* 연락처 문단 줄 간격 */
 }
 
 #contact a {
     color: var(--link-text);
+    /* 연락처 링크 색상 */
     text-decoration: none;
+    /* 밑줄 제거 */
     transition: color 0.3s ease;
+    /* 색상 전환 */
 }
 
 #contact a:hover {
     text-decoration: underline;
+    /* 호버 시 밑줄 */
 }
 
 /* ===== 푸터(Footer) ===== */
-/* footer.css */
 footer {
     text-align: center;
-    padding: 20px;
+    /* 가운데 정렬 */
+    padding: 2vw;
+    /* 안쪽 여백 */
     background-color: var(--footer-bg);
+    /* 푸터 배경색 */
     color: var(--footer-text);
-    margin-top: 30px;
+    /* 푸터 텍스트 색상 */
+    margin-top: 3vw;
+    /* 위쪽 여백 */
     transition: background-color 0.3s ease, color 0.3s ease;
+    /* 색상 전환 */
 }

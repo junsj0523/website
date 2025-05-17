@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <h1>포테니티 (Potanity)</h1>
+        <h1>포테니티</h1>
         <div class="header-controls-center">
             <nav class="lang-switch" aria-label="언어 전환">
                 <a href="index.html">한국어</a> | <a href="index-en.html">English</a>
@@ -25,11 +25,11 @@
         <div class="container">
             <section id="introduction" class="section">
                 <h2>동아리 소개</h2>
-                <p>포테니티(Potanity)는 강원대학교 게임 개발 중앙 동아리로,<br>
+                <p>포테니티는 강원대학교 게임 개발 중앙 동아리로,<br>
                     게임 기획, 프로그래밍, 그래픽, 사운드 등 다양한 분야의 학생들이 모여<br>
                     창의적이고 혁신적인 게임을 함께 만드는 곳입니다.<br><br>
-                    Unity, Unreal 등 다양한 엔진을 활용한 프로젝트와<br>
-                    정기 세미나, 게임잼, 멘토링 등 다양한 활동을 통해 실력을 키우고 있습니다.<br>
+                    Unity를 활용한 프로젝트와<br>
+                    정기 스터디, 정기 모임, 기획 스터디, 게임 전시등 행사 참여, 게임잼 등 다양한 활동을 통해 실력을 키우고 있습니다.<br>
                     게임 개발에 열정이 있다면 누구나 환영합니다!</p>
             </section>
             <section id="regular-activities" class="section">
@@ -40,7 +40,7 @@
                     <li><strong>🤝 자율 모임:</strong> 수요일, 금요일</li>
                     <li><strong>💡 기타 활동:</strong>
                         <ul>
-                            <li>기획 스터디 상시 운영</li>
+                            <li>기획 스터디</li>
                             <li>매달 <strong>첫째주 수요일</strong>과 <strong>셋째주 금요일</strong> 정기 모임날은 <b>피자데이 🍕</b>!</li>
                         </ul>
                     </li>
@@ -49,7 +49,7 @@
 
             <section id="game-play" class="section game-play-button-container">
                 <h2>게임 플레이</h2>
-                <p>아래 버튼을 클릭하여 저희가 만든 게임을 즐겨보세요!</p>
+                <p>아래 버튼을 클릭하여 저희가 만든 게임을 웹브라우저에서 즉시 즐겨보세요!</p>
                 <a href="game/index.html" class="game-play-button" id="game-play-link">
                     <img src="images/game-play-button.png" alt="게임 플레이 시작 버튼 이미지">
                 </a>
@@ -79,11 +79,17 @@
             <section id="history" class="section">
                 <h2>동아리 연혁</h2>
                 <ul>
-                    <li><strong>2017년:</strong> 포테니티 동아리 창립</li>
-                    <li><strong>2018년~2022년:</strong> 다양한 자체 게임 프로젝트 및 교내외 공모전 참가</li>
-                    <li><strong>2023년:</strong> Unity 기반 대형 프로젝트 착수, 신입 부원 대거 모집</li>
-                    <li><strong>2024년:</strong> 포테니티 공식 홈페이지 및 대표 게임 출시</li>
-                    <li><strong>2025년:</strong> WebGL 기반 게임 서비스 및 전국 대학 연합 게임잼 개최 예정</li>
+                    <li><strong>2024년 여름방학:</strong> 포테니티 동아리 설립</li>
+                    <li><strong>2024년 2학기:</strong> 동아리 내 스터디 진행</li>
+                    <li><strong>2024년 겨울방학:</strong> 메탈슬러그 게임 제작</li>
+                    <li><strong>2025년:</strong>
+                        <ul>
+                            <li>정규 활동 시작</li>
+                            <li>스터디 진행</li>
+                            <li>기타 미니게임 제작</li>
+                            <li>학교 행사 참여 및 게임 시연</li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
 
@@ -111,28 +117,45 @@
         </div>
     </div>
 
+    <!-- 하드웨어 가속 안내 모달 템플릿 -->
+    <template id="hwaccel-warning-template">
+        <strong>GPU 하드웨어 가속 안내</strong>
+        <div class="webgpu-warning-alert">원활한 게임 실행을 위해 브라우저의 <b>GPU 하드웨어 가속</b>이 반드시 활성화되어 있어야 합니다.</div>
+        <ul>
+            <li><b>Chrome:</b> 설정 &gt; 시스템 &gt; "가능한 경우 하드웨어 가속 사용"을 켜고 브라우저를 재시작하세요.</li>
+            <li><b>Edge:</b> 설정 &gt; 시스템 및 성능 &gt; "가능한 경우 하드웨어 가속 사용"을 켜고 브라우저를 재시작하세요.</li>
+        </ul>
+        <span id="hwaccel-renderer-info"></span>
+        <span style='color:#d00'>(하드웨어 가속이 꺼져 있으면 게임 성능이 매우 저하되거나 실행이 불가능할 수 있습니다.)</span>
+    </template>
+
     <template id="webgpu-warning-template">
         <strong>WebGPU 지원 안내</strong>
         <div class="webgpu-warning-alert">현재 브라우저에서 WebGPU가 지원되지 않습니다!</div>
         <span id="webgpu-specific-error"></span>
-        이 게임은 최신 그래픽 기술인 <b>WebGPU</b>를 사용하여 제작되었습니다. 원활한 게임 플레이를 위해 WebGPU를 지원하는 환경이 필요합니다.
+        이 게임은 최신 그래픽 기술인 <b>WebGPU</b>를 사용하여 제작되었습니다. 원활한 게임 플레이를 위해 WebGPU를 지원하는 환경이 필요합니다.<br>
         <b>권장 브라우저 및 환경 (2025년 초 기준):</b>
-        항상 최신 버전의 브라우저를 사용해주세요.<br>
-        <b>데스크톱:</b>
-        - Chrome (버전 113 이상): Windows, macOS, ChromeOS, Linux
-        - Edge (버전 113 이상): Windows, macOS, Linux
-        - Firefox (Nightly 빌드 또는 버전 141 이상 예정, 현재는 플래그 활성화 필요)
-        - Safari (macOS 최신 버전의 Technology Preview 또는 Safari 정식 버전에서 개발자 메뉴/기능 플래그로 활성화)
-        - Opera (버전 100 이상)<br>
-        <b>모바일:</b>
-        - Chrome for Android (버전 121/123 이상)
-        - Safari on iOS (iOS 18 베타 이상, 설정에서 기능 플래그 활성화 필요)
-        - Samsung Internet (버전 25 이상)
-        - Opera Mobile (버전 80 이상)<br>
-        일부 브라우저나 구형 버전에서는 WebGPU가 기본적으로 비활성화되어 있거나, 실험적 기능 플래그를 통해 수동으로 활성화해야 할 수 있습니다. (예: <code>chrome://flags</code>,
-        <code>edge://flags</code> 등) 또한, WebGPU는 보안 연결(HTTPS 또는 localhost) 환경에서만 작동합니다.<br>
-        <a href="https://caniuse.com/webgpu" target="_blank" rel="noopener">WebGPU 브라우저 호환성(caniuse.com) 직접 확인하기</a>
-        <b>계속 진행하시겠습니까?</b>
+        <ul>
+            <li><b>데스크톱:</b>
+                <ul>
+                    <li>Chrome (버전 113 이상): Windows, macOS, ChromeOS, Linux</li>
+                    <li>Edge (버전 113 이상): Windows, macOS, Linux</li>
+                    <li>Firefox (Nightly 빌드 또는 버전 141 이상 예정, 현재는 플래그 활성화 필요)</li>
+                    <li>Safari (macOS 최신 버전의 Technology Preview 또는 Safari 정식 버전에서 개발자 메뉴/기능 플래그로 활성화)</li>
+                    <li>Opera (버전 100 이상)</li>
+                </ul>
+            </li>
+            <li><b>모바일:</b>
+                <ul>
+                    <li>Chrome for Android (버전 121/123 이상)</li>
+                    <li>Safari on iOS (iOS 18 베타 이상, 설정에서 기능 플래그 활성화 필요)</li>
+                    <li>Samsung Internet (버전 25 이상)</li>
+                    <li>Opera Mobile (버전 80 이상)</li>
+                </ul>
+            </li>
+        </ul>
+        <a href="https://caniuse.com/webgpu" target="_blank" rel="noopener">WebGPU 브라우저 호환성(caniuse.com) 직접 확인하기</a><br>
+        <b>계속 진행하시겠습니까?</b> <br>
         <span style='color:#d00'>(게임이 정상적으로 실행되지 않거나 일부 기능이 제한될 수 있습니다.)</span>
     </template>
 

@@ -2,61 +2,84 @@
 
 header {
     background-color: var(--header-bg);
+    /* 헤더 배경색 */
     color: var(--header-text);
+    /* 헤더 텍스트 색상 */
     padding: 1em 0;
+    /* 위아래 여백 1em */
     text-align: center;
+    /* 가운데 정렬 */
     position: relative;
+    /* 상대 위치(내부 요소 배치용) */
     transition: background-color 0.3s ease, color 0.3s ease;
+    /* 색상 전환 애니메이션 */
 }
 
 .header-controls-row {
     width: 100%;
+    /* 전체 너비 */
     display: flex;
+    /* 플렉스 레이아웃 */
     justify-content: center;
+    /* 가로 중앙 정렬 */
     align-items: center;
+    /* 세로 중앙 정렬 */
     margin-top: 0.2em;
+    /* 위쪽 여백 */
     margin-bottom: 0.5em;
+    /* 아래쪽 여백 */
     min-height: 40px;
+    /* 최소 높이 */
 }
 
 .header-controls-center {
     display: flex;
+    /* 플렉스 레이아웃 */
     flex-direction: column;
+    /* 세로 정렬 */
     align-items: center;
+    /* 가로 중앙 정렬 */
     justify-content: center;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    /* 세로 중앙 정렬 */
 }
 
 .lang-switch {
     position: static;
+    /* 기본 위치 */
     font-size: 1rem;
+    /* 폰트 크기 */
     margin-top: 0.2em;
+    /* 위쪽 여백 */
 }
 
 @media (max-width: 600px) {
     .header-controls-row {
         min-height: 32px;
+        /* 모바일: 최소 높이 */
         margin-bottom: 0.2em;
-    }
-
-    .header-controls-center {
-        margin-bottom: 0.2em;
+        /* 모바일: 아래쪽 여백 */
     }
 
     .lang-switch {
         font-size: 0.95em;
+        /* 모바일: 폰트 크기 약간 작게 */
     }
 }
 
 .lang-switch a {
     color: var(--header-text);
+    /* 언어 전환 링크 색상 */
     text-decoration: none;
+    /* 밑줄 제거 */
     margin: 0 2px;
+    /* 좌우 여백 */
     font-weight: bold;
+    /* 굵은 글씨 */
     transition: color 0.2s;
+    /* 색상 전환 애니메이션 */
 }
 
 .lang-switch a:hover {
     color: var(--button-hover-border);
+    /* 호버 시 파란색 */
 }

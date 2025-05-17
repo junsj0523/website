@@ -2,48 +2,90 @@
 
 :root {
     --page-bg: #f4f4f4;
+    /* 전체 페이지 배경색(연한 회색) */
     --page-text: #333;
+    /* 기본 텍스트 색상(짙은 회색) */
     --header-bg: #333;
+    /* 헤더 배경색(짙은 회색) */
     --header-text: #fff;
+    /* 헤더 텍스트 색상(흰색) */
     --nav-link-text: #fff;
+    /* 네비게이션 링크 텍스트 색상(흰색) */
     --container-bg: #fff;
+    /* 컨테이너(본문) 배경색(흰색) */
     --section-border: #eee;
+    /* 섹션 구분선 색상(연한 회색) */
     --section-title-text: #333;
+    /* 섹션 제목 텍스트 색상(짙은 회색) */
     --section-title-border: #007bff;
+    /* 섹션 제목 하단 테두리(파란색) */
     --button-hover-shadow: rgba(0, 123, 255, 0.5);
+    /* 버튼 호버 시 그림자(파란색, 반투명) */
     --button-hover-border: #007bff;
+    /* 버튼 호버 시 테두리(파란색) */
     --card-bg: #f9f9f9;
+    /* 카드(미니게임 등) 배경색(아주 연한 회색) */
     --card-border: #ddd;
+    /* 카드 테두리(연한 회색) */
     --card-image-border: #ccc;
+    /* 카드 이미지 테두리(중간 회색) */
     --card-title-text: #0056b3;
+    /* 카드 제목 텍스트(진한 파란색) */
     --link-text: #007bff;
+    /* 링크 텍스트(파란색) */
     --footer-bg: #333;
+    /* 푸터 배경색(짙은 회색) */
     --footer-text: #fff;
+    /* 푸터 텍스트(흰색) */
     --theme-toggle-bg: #e0e0e0;
+    /* 테마 토글 버튼 배경(연한 회색) */
     --theme-toggle-icon: #333;
+    /* 테마 토글 아이콘(짙은 회색) */
     --theme-toggle-border: #ccc;
+    /* 테마 토글 테두리(중간 회색) */
 }
 
 body.dark-mode {
     --page-bg: #121212;
+    /* 다크모드: 전체 페이지 배경(매우 짙은 회색) */
     --page-text: #e0e0e0;
+    /* 다크모드: 기본 텍스트(연한 회색) */
     --header-bg: #1e1e1e;
+    /* 다크모드: 헤더 배경(짙은 회색) */
     --header-text: #e0e0e0;
+    /* 다크모드: 헤더 텍스트(연한 회색) */
     --nav-link-text: #e0e0e0;
+    /* 다크모드: 네비게이션 링크(연한 회색) */
     --container-bg: #1e1e1e;
+    /* 다크모드: 컨테이너 배경(짙은 회색) */
     --section-border: #3a3a3a;
+    /* 다크모드: 섹션 구분선(중간 회색) */
     --section-title-text: #e0e0e0;
+    /* 다크모드: 섹션 제목(연한 회색) */
     --section-title-border: #00a1ff;
+    /* 다크모드: 섹션 제목 하단 테두리(밝은 파란색) */
     --button-hover-shadow: rgba(0, 161, 255, 0.7);
+    /* 다크모드: 버튼 호버 그림자(밝은 파란색, 반투명) */
     --button-hover-border: #00a1ff;
+    /* 다크모드: 버튼 호버 테두리(밝은 파란색) */
     --card-bg: #2a2a2a;
+    /* 다크모드: 카드 배경(짙은 회색) */
     --card-border: #444;
+    /* 다크모드: 카드 테두리(중간 회색) */
     --card-image-border: #555;
+    /* 다크모드: 카드 이미지 테두리(더 짙은 회색) */
     --card-title-text: #87cefa;
+    /* 다크모드: 카드 제목(밝은 하늘색) */
     --link-text: #66ccff;
+    /* 다크모드: 링크 텍스트(밝은 파란색) */
     --footer-bg: #1e1e1e;
+    /* 다크모드: 푸터 배경(짙은 회색) */
     --footer-text: #e0e0e0;
+    /* 다크모드: 푸터 텍스트(연한 회색) */
     --theme-toggle-bg: #444;
+    /* 다크모드: 테마 토글 버튼 배경(중간 회색) */
     --theme-toggle-icon: #e0e0e0;
+    /* 다크모드: 테마 토글 아이콘(연한 회색) */
     --theme-toggle-border: #555;
+    /* 다크모드: 테마 토글 테두리(더 짙은 회색) */
 }
