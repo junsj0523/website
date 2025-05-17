@@ -11,6 +11,9 @@
 <body>
     <header>
         <h1>우리 동아리</h1>
+        <div class="lang-switch">
+            <a href="index.html">한국어</a> | <a href="index-en.html">English</a>
+        </div>
         <!-- 테마 토글 버튼 추가 -->
         <button id="theme-toggle" aria-label="테마 전환">🌙</button>
         <!-- 필요시 네비게이션 추가 -->
@@ -98,6 +101,32 @@
             </div>
         </div>
     </div>
+
+    <!-- WebGPU 경고 안내문 템플릿 (js에서 복사해서 사용) -->
+    <template id="webgpu-warning-template">
+        <strong>WebGPU 지원 안내</strong>
+        <div class="webgpu-warning-alert">현재 브라우저에서 WebGPU가 지원되지 않습니다!</div>
+        <span id="webgpu-specific-error"></span>
+        이 게임은 최신 그래픽 기술인 <b>WebGPU</b>를 사용하여 제작되었습니다. 원활한 게임 플레이를 위해 WebGPU를 지원하는 환경이 필요합니다.
+        <b>권장 브라우저 및 환경 (2025년 초 기준):</b>
+        항상 최신 버전의 브라우저를 사용해주세요.<br>
+        <b>데스크톱:</b>
+        - Chrome (버전 113 이상): Windows, macOS, ChromeOS, Linux
+        - Edge (버전 113 이상): Windows, macOS, Linux
+        - Firefox (Nightly 빌드 또는 버전 141 이상 예정, 현재는 플래그 활성화 필요)
+        - Safari (macOS 최신 버전의 Technology Preview 또는 Safari 정식 버전에서 개발자 메뉴/기능 플래그로 활성화)
+        - Opera (버전 100 이상)<br>
+        <b>모바일:</b>
+        - Chrome for Android (버전 121/123 이상)
+        - Safari on iOS (iOS 18 베타 이상, 설정에서 기능 플래그 활성화 필요)
+        - Samsung Internet (버전 25 이상)
+        - Opera Mobile (버전 80 이상)<br>
+        일부 브라우저나 구형 버전에서는 WebGPU가 기본적으로 비활성화되어 있거나, 실험적 기능 플래그를 통해 수동으로 활성화해야 할 수 있습니다. (예: <code>chrome://flags</code>,
+        <code>edge://flags</code> 등) 또한, WebGPU는 보안 연결(HTTPS 또는 localhost) 환경에서만 작동합니다.<br>
+        <a href="https://caniuse.com/webgpu" target="_blank" rel="noopener">WebGPU 브라우저 호환성(caniuse.com) 직접 확인하기</a>
+        <b>계속 진행하시겠습니까?</b>
+        <span style='color:#d00'>(게임이 정상적으로 실행되지 않거나 일부 기능이 제한될 수 있습니다.)</span>
+    </template>
 
     <script src="js/theme.js"></script>
     <script src="js/browser-check.js"></script>

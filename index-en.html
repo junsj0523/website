@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Club Homepage</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Our Club</h1>
+        <div class="lang-switch">
+            <a href="index.html">한국어</a> | <a href="index-en.html">English</a>
+        </div>
+        <button id="theme-toggle" aria-label="Switch theme">🌙</button>
+    </header>
+    <div class="container">
+        <section id="introduction" class="section">
+            <h2>About the Club</h2>
+            <p>Write a description of the club here. Please freely describe what activities our club does, what goals it
+                has, etc. Our goal is to grow together through creative and fun projects!</p>
+        </section>
+        <section id="game-play" class="section game-play-button-container">
+            <h2>Play Game</h2>
+            <p>Click the button below to enjoy the game we made!</p>
+            <a href="game/index.html" class="game-play-button" id="game-play-link">
+                <img src="images/game-play-button.png" alt="Start Game Play">
+            </a>
+        </section>
+        <section id="minigames" class="section">
+            <h2>Mini Games</h2>
+            <p>Our game includes the following fun mini games:</p>
+            <div class="minigame">
+                <img src="images/minigame1.png" alt="Mini Game 1 Image">
+                <div class="minigame-info">
+                    <h3>Mini Game 1: Space Exploration</h3>
+                    <p>A brief description of Mini Game 1. Explore the mysterious universe and find hidden treasures.
+                        Various planets and alien life forms await you!</p>
+                </div>
+            </div>
+            <div class="minigame">
+                <img src="images/minigame2.png" alt="Mini Game 2 Image">
+                <div class="minigame-info">
+                    <h3>Mini Game 2: Puzzle Master</h3>
+                    <p>A brief description of Mini Game 2. Solve various brain-stimulating puzzles and challenge the
+                        highest score. The higher the level, the harder it gets!</p>
+                </div>
+            </div>
+        </section>
+        <section id="history" class="section">
+            <h2>Club History</h2>
+            <ul>
+                <li><strong>2023:</strong> Club founded and first idea meeting</li>
+                <li><strong>First half of 2024:</strong> Started developing the first prototype</li>
+                <li><strong>Second half of 2024:</strong> Officially launched the 'Our Game' project</li>
+                <li><strong>2025:</strong> 'Our Game' WebGL version scheduled for release!</li>
+                <li>Add major milestones here.</li>
+            </ul>
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact</h2>
+            <p>If you have any questions or suggestions about the club, feel free to contact us at the address below:
+            </p>
+            <p><strong>Email:</strong> <a href="mailto:contact@example.com">contact@example.com</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/your-username/your-repository-name"
+                    target="_blank">Club GitHub Repository</a></p>
+            <p><strong>Club Room Location:</strong> Student Union Building Room 301 (Contact us before visiting!)</p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 Our Club. All Rights Reserved.</p>
+    </footer>
+    <div id="webgpu-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" id="webgpu-modal-close">&times;</span>
+            <div id="webgpu-modal-message"></div>
+            <div class="modal-actions">
+                <button id="webgpu-modal-cancel">Cancel</button>
+                <button id="webgpu-modal-continue">Continue</button>
+            </div>
+        </div>
+    </div>
+    <template id="webgpu-warning-template">
+        <strong>WebGPU Support Notice</strong>
+        <div class="webgpu-warning-alert">WebGPU is not supported in your current browser!</div>
+        <span id="webgpu-specific-error"></span>
+        This game uses the latest graphics technology, <b>WebGPU</b>. For smooth gameplay, a WebGPU-supported
+        environment is required.
+        <b>Recommended Browsers & Environments (as of early 2025):</b>
+        Always use the latest version of your browser.<br>
+        <b>Desktop:</b>
+        - Chrome (v113+): Windows, macOS, ChromeOS, Linux
+        - Edge (v113+): Windows, macOS, Linux
+        - Firefox (Nightly or v141+, may require enabling flags)
+        - Safari (latest Technology Preview or official version with developer menu/flags enabled)
+        - Opera (v100+)<br>
+        <b>Mobile:</b>
+        - Chrome for Android (v121/123+)
+        - Safari on iOS (iOS 18 beta+, may require enabling flags)
+        - Samsung Internet (v25+)
+        - Opera Mobile (v80+)<br>
+        In some browsers or older versions, WebGPU may be disabled by default or require enabling experimental flags
+        (e.g., <code>chrome://flags</code>, <code>edge://flags</code>). WebGPU also only works on secure origins (HTTPS
+        or localhost).<br>
+        <a href="https://caniuse.com/webgpu" target="_blank" rel="noopener">Check WebGPU browser compatibility
+            (caniuse.com)</a>
+        <b>Do you want to continue?</b>
+        <span style='color:#d00'>(The game may not run properly or some features may be limited.)</span>
+    </template>
+    <script src="js/theme.js"></script>
+    <script src="js/browser-check.js"></script>
+</body>
+
+</html>

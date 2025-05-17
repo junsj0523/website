@@ -360,6 +360,27 @@ footer {
     /* opacity: 0.8; */
 }
 
+/* ========= 언어 선택 버튼 스타일 ========= */
+.lang-switch {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 1rem;
+    z-index: 10;
+}
+
+.lang-switch a {
+    color: var(--header-text);
+    text-decoration: none;
+    margin: 0 2px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.lang-switch a:hover {
+    color: var(--button-hover-border);
+}
+
 /* ====== WebGPU 경고 모달 스타일 ====== */
 .modal {
     position: fixed;
@@ -440,4 +461,13 @@ footer {
 
 .modal-actions button:hover {
     filter: brightness(1.1);
+}
+
+/* ========= WebGPU 경고 강조 스타일 ========= */
+.webgpu-warning-alert {
+    color: #d00;
+    font-weight: bold;
+    margin: 8px 0 12px 0;
+    font-size: 1.08em;
+    letter-spacing: 0.01em;
 }
