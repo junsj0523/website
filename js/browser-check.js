@@ -2,6 +2,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const gamePlayLink = document.getElementById('game-play-link');
     if (!gamePlayLink) return;
 
+    // 모달 닫기 함수 분리
+    function closeModal() {
+        const modal = document.getElementById('universal-modal');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+
+    // 모바일 환경 감지 함수
+    function isMobile() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // WebGL 소프트웨어 렌더러 여부 체크 함수
+    function isWebGLSoftwareRenderer() {
+        try {
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (gl) {
+                let renderer = '';
+                const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                if (debugInfo && gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)) {
+                    renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                } else if (gl.getParameter(gl.RENDERER)) {
+                    renderer = gl.getParameter(gl.RENDERER);
+                }
+                console.log('[WebGL Renderer 감지]', renderer);
+                return /basic render|software|microsoft|llvmpipe|swiftshader|angle/i.test(renderer);
+            }
+        } catch (e) { }
+        return false;
+    }
+
     // 템플릿을 활용한 모달 메시지 표시 함수
     function setModalTemplate(modalMsg, templateId) {
         modalMsg.textContent = '';
@@ -33,10 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             continueBtn.style.display = 'none';
         }
-        function closeModal() {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-        }
         document.getElementById('universal-modal-close').onclick = closeModal;
         modal.onclick = function (e) { if (e.target === modal) closeModal(); };
         window.addEventListener('keydown', function escListener(e) {
@@ -46,16 +74,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = 'hidden';
     }
 
-    // 모바일 환경 감지 함수
-    function isMobile() {
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-
     gamePlayLink.addEventListener('click', async function (event) {
         event.preventDefault();
         let webgpuSupported = !!navigator.gpu;
         let webgpuAdapter = null;
-        let webglSoftwareRenderer = false;
         const mobile = isMobile();
 
         if (webgpuSupported) {
@@ -63,21 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 webgpuAdapter = await navigator.gpu.requestAdapter();
             } catch (e) { }
         }
-        // WebGL 하드웨어 가속 확인 (항상 체크, 단 모바일은 건너뜀)
-        if (!mobile) {
-            try {
-                const canvas = document.createElement('canvas');
-                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-                if (gl) {
-                    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-                    if (debugInfo) {
-                        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-                        webglSoftwareRenderer = /basic render|software|microsoft|llvmpipe|swiftshader|angle/i.test(renderer);
-                    }
-                }
-            } catch (e) { }
-        }
-
         // 분기: 우선순위대로 안내
         if (!webgpuSupported) {
             // WebGPU 미지원: 상세 안내
@@ -85,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 continueText: 'WebGL로 플레이하기',
                 onContinue: function () {
                     // WebGL로 플레이하기(무시): WebGL 하드웨어 가속 확인
-                    if (!mobile && webglSoftwareRenderer) {
+                    if (!mobile && isWebGLSoftwareRenderer()) {
                         showModalTemplate('webgl-no-hwaccel-template', {
                             continueText: '무시하고 플레이',
                             onContinue: function () { window.location.href = gamePlayLink.href; }
@@ -105,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             return;
         }
-        if (!mobile && webglSoftwareRenderer) {
+        if (!mobile && isWebGLSoftwareRenderer()) {
             // (WebGPU/어댑터 여부와 무관하게) PC에서 WebGL이 소프트웨어 렌더러인 경우 경고 모달 표시
             showModalTemplate('webgl-no-hwaccel-template', {
                 continueText: '무시하고 플레이',
