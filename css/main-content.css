@@ -1,0 +1,131 @@
+/* main-content.css: 본문(컨테이너, 섹션, 게임, 미니게임, 연혁, 연락처, 푸터) 관련 CSS를 통합한 파일 */
+
+/* ===== 전체 테마 ===== */
+/* base.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--page-bg);
+    color: var(--page-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== 컨테이너 및 섹션 ===== */
+/* container.css */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background-color: var(--container-bg);
+    transition: background-color 0.3s ease;
+}
+
+.section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--section-border);
+    transition: border-color 0.3s ease;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.section h2 {
+    color: var(--section-title-text);
+    border-bottom: 2px solid var(--section-title-border);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ===== 게임 플레이 버튼 및 미니게임 ===== */
+/* game.css */
+.game-play-button-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.game-play-button img {
+    max-width: 300px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.game-play-button img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--button-hover-shadow);
+    border-color: var(--button-hover-border);
+}
+
+.minigame {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.minigame img {
+    max-width: 200px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--card-image-border);
+    transition: border-color 0.3s ease;
+}
+
+.minigame-info h3 {
+    margin-top: 0;
+    color: var(--card-title-text);
+    transition: color 0.3s ease;
+}
+
+.minigame-info p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+/* ===== 연혁(History) ===== */
+/* history.css */
+#history ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+#history li {
+    margin-bottom: 10px;
+}
+
+/* ===== 연락처(Contact) ===== */
+/* contact.css */
+#contact p {
+    line-height: 1.8;
+}
+
+#contact a {
+    color: var(--link-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#contact a:hover {
+    text-decoration: underline;
+}
+
+/* ===== 푸터(Footer) ===== */
+/* footer.css */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    margin-top: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}

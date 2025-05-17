@@ -1,0 +1,49 @@
+/* 사이트 전체에서 사용하는 색상, 테마 등 CSS 변수를 정의한 파일입니다. */
+
+:root {
+    --page-bg: #f4f4f4;
+    --page-text: #333;
+    --header-bg: #333;
+    --header-text: #fff;
+    --nav-link-text: #fff;
+    --container-bg: #fff;
+    --section-border: #eee;
+    --section-title-text: #333;
+    --section-title-border: #007bff;
+    --button-hover-shadow: rgba(0, 123, 255, 0.5);
+    --button-hover-border: #007bff;
+    --card-bg: #f9f9f9;
+    --card-border: #ddd;
+    --card-image-border: #ccc;
+    --card-title-text: #0056b3;
+    --link-text: #007bff;
+    --footer-bg: #333;
+    --footer-text: #fff;
+    --theme-toggle-bg: #e0e0e0;
+    --theme-toggle-icon: #333;
+    --theme-toggle-border: #ccc;
+}
+
+body.dark-mode {
+    --page-bg: #121212;
+    --page-text: #e0e0e0;
+    --header-bg: #1e1e1e;
+    --header-text: #e0e0e0;
+    --nav-link-text: #e0e0e0;
+    --container-bg: #1e1e1e;
+    --section-border: #3a3a3a;
+    --section-title-text: #e0e0e0;
+    --section-title-border: #00a1ff;
+    --button-hover-shadow: rgba(0, 161, 255, 0.7);
+    --button-hover-border: #00a1ff;
+    --card-bg: #2a2a2a;
+    --card-border: #444;
+    --card-image-border: #555;
+    --card-title-text: #87cefa;
+    --link-text: #66ccff;
+    --footer-bg: #1e1e1e;
+    --footer-text: #e0e0e0;
+    --theme-toggle-bg: #444;
+    --theme-toggle-icon: #e0e0e0;
+    --theme-toggle-border: #555;
+}

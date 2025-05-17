@@ -1,0 +1,90 @@
+/* WebGPU 경고 모달 및 관련 강조 스타일을 정의한 CSS 파일입니다. */
+
+.modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--container-bg);
+    color: var(--page-text);
+    padding: 32px 24px 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.25);
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+    animation: modal-fadein 0.2s;
+}
+
+@keyframes modal-fadein {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 28px;
+    color: var(--page-text);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+#webgpu-modal-message {
+    white-space: pre-line;
+    margin-bottom: 24px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.modal-actions button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    background: var(--button-hover-border);
+    color: #fff;
+    transition: background 0.2s;
+}
+
+.modal-actions button#webgpu-modal-cancel {
+    background: #888;
+}
+
+.modal-actions button:hover {
+    filter: brightness(1.1);
+}
+
+.webgpu-warning-alert {
+    color: #d00;
+    font-weight: bold;
+    margin: 8px 0 12px 0;
+    font-size: 1.08em;
+    letter-spacing: 0.01em;
+}

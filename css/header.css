@@ -1,0 +1,62 @@
+/* 헤더(상단 UI)와 언어/테마 스위치의 스타일을 정의한 CSS 파일입니다. */
+
+header {
+    background-color: var(--header-bg);
+    color: var(--header-text);
+    padding: 1em 0;
+    text-align: center;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-controls-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+    min-height: 40px;
+}
+
+.header-controls-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.lang-switch {
+    position: static;
+    font-size: 1rem;
+    margin-top: 0.2em;
+}
+
+@media (max-width: 600px) {
+    .header-controls-row {
+        min-height: 32px;
+        margin-bottom: 0.2em;
+    }
+
+    .header-controls-center {
+        margin-bottom: 0.2em;
+    }
+
+    .lang-switch {
+        font-size: 0.95em;
+    }
+}
+
+.lang-switch a {
+    color: var(--header-text);
+    text-decoration: none;
+    margin: 0 2px;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.lang-switch a:hover {
+    color: var(--button-hover-border);
+}
