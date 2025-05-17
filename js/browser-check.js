@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     gamePlayLink.addEventListener('click', async function (event) {
         event.preventDefault();
-        // 1. WebGPU, WebGPU 어댑터, WebGL 하드웨어 가속 모두 한 번에 확인
         let webgpuSupported = !!navigator.gpu;
         let webgpuAdapter = null;
         let webglSoftwareRenderer = false;
@@ -107,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
         if (!mobile && webglSoftwareRenderer) {
-            // WebGPU/어댑터는 있지만 WebGL 소프트웨어 렌더러(특수 상황) → 안내 (PC에서만)
+            // (WebGPU/어댑터 여부와 무관하게) PC에서 WebGL이 소프트웨어 렌더러인 경우 경고 모달 표시
             showModalTemplate('webgl-no-hwaccel-template', {
                 continueText: '무시하고 플레이',
                 onContinue: function () { window.location.href = gamePlayLink.href; }
