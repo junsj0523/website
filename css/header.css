@@ -27,7 +27,8 @@ header {
 .lang-switch a {
     color: var(--header-text);
     text-decoration: none;
-    margin: 0 2px;
+    margin: 0 0.125rem;
+    /* 2px를 rem 단위로 변경 */
     font-weight: bold;
     transition: color 0.2s;
 }
