@@ -28,10 +28,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     renderer = gl.getParameter(gl.RENDERER);
                 }
                 console.log('[WebGL Renderer 감지]', renderer);
-                return /basic render|software|microsoft|llvmpipe|swiftshader|angle/i.test(renderer);
+                const isSoftware = /basic render|software|microsoft|llvmpipe|swiftshader|angle/i.test(renderer);
+                return { isSoftware, renderer };
             }
         } catch (e) { }
-        return false;
+        return { isSoftware: false, renderer: '' };
     }
 
     // 템플릿을 활용한 모달 메시지 표시 함수
@@ -50,6 +51,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const cancelBtn = document.getElementById('universal-modal-cancel');
         const continueBtn = document.getElementById('universal-modal-continue');
         setModalTemplate(msg, templateId);
+
+        // 렌더러 정보가 있으면 표시
+        if (options.rendererInfo) {
+            const rendererElement = msg.querySelector('.renderer-info');
+            if (rendererElement) {
+                rendererElement.textContent = options.rendererInfo;
+                // rendererElement.style.display = 'block';
+            }
+        }
+
         // 버튼 텍스트/동작
         cancelBtn.textContent = options.cancelText || '창 닫기';
         cancelBtn.type = 'button';
@@ -81,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let webgpuSupported = !!navigator.gpu;
         let webgpuAdapter = null;
         const mobile = isMobile();
+        const webglInfo = isWebGLSoftwareRenderer();
 
         if (webgpuSupported) {
             try {
@@ -94,9 +106,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 continueText: 'WebGL로 플레이하기',
                 onContinue: function () {
                     // WebGL로 플레이하기(무시): WebGL 하드웨어 가속 확인
-                    if (!mobile && isWebGLSoftwareRenderer()) {
+                    if (!mobile && webglInfo.isSoftware) {
                         showModalTemplate('webgl-no-hwaccel-template', {
                             continueText: '무시하고 플레이',
+                            rendererInfo: `감지된 그래픽 렌더러: ${webglInfo.renderer}`,
                             onContinue: function () { window.location.href = gamePlayLink.href; }
                         });
                     } else {
@@ -114,10 +127,11 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             return;
         }
-        if (!mobile && isWebGLSoftwareRenderer()) {
+        if (!mobile && webglInfo.isSoftware) {
             // (WebGPU/어댑터 여부와 무관하게) PC에서 WebGL이 소프트웨어 렌더러인 경우 경고 모달 표시
             showModalTemplate('webgl-no-hwaccel-template', {
                 continueText: '무시하고 플레이',
+                rendererInfo: `감지된 그래픽 렌더러: ${webglInfo.renderer}`,
                 onContinue: function () { window.location.href = gamePlayLink.href; }
             });
             return;
