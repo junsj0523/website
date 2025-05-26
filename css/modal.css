@@ -39,18 +39,6 @@
     }
 }
 
-/* 모달 닫기(X) 버튼 위치, 스타일 */
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 28px;
-    color: var(--page-text);
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-
 /* WebGPU/모달 메시지 영역의 폰트, 줄바꿈 등 */
 #webgpu-modal-message {
     white-space: normal;

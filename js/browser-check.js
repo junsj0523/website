@@ -76,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             continueBtn.style.display = 'none';
         }
-        document.getElementById('universal-modal-close').onclick = closeModal;
         modal.onclick = function (e) { if (e.target === modal) closeModal(); };
         window.addEventListener('keydown', function escListener(e) {
             if (e.key === 'Escape') { closeModal(); window.removeEventListener('keydown', escListener); }
